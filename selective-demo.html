@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+   /* You must define styles for the drag selection. Here is a good starting point */
+   .sl-selectbox {
+     border: 1px solid #000;
+     background-color: #ccc;
+     position: absolute;
+     z-index: 9999;
+     opacity: 0.2;
+   }
+
+    .component {
+    font-family: Helvetica, Arial, sans-serif;
+     font-size: 26px;
+    padding: 10px;
+    box-sizing: border-box;
+     position: absolute;
+     top: 0px;
+     width: 100px;
+     height: 100px;
+     background-color: #aaa;
+   }
+
+   .sl-selecting {
+     background-color: yellow;
+   }
+
+   .sl-selected {
+     background-color: green;
+   }
+
+   .sl-deselecting {
+     background-color: orange;
+   }
+
+   #container {
+    position: relative;
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 700px;
+    height: 400px;
+    background-color: #ddd;
+    }
+
+    .legend {
+    list-style-type: none;
+     display: inline-block;
+    padding: 0;
+    }
+
+   body {
+     padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="component" style="left: 0px">1</div>
+    <div class="component" style="left: 110px">2</div>
+    <div class="component" style="left: 220px">3</div>
+    <div class="component" style="left: 330px">4</div>
+    <div class="component" style="left: 440px">5</div>
+    <div class="component" style="left: 550px">6</div>
+  </div>
+
+  <ul class="legend">
+    <li style="background-color: #aaa;">unselected</li>
+    <li class="sl-selecting">selecting</li>
+    <li class="sl-selected">selected</li>
+    <li class="sl-deselecting">deselecting</li>
+  </ul>
+
+  <h2>Initialization code</h2>
+  <pre>
+    $('#container').selective();
+
+    $('.component').on('sl-deleted', function() {
+      $(this).remove();
+    });
+  </pre>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="selective.min.js"></script>
+  <script>
+   $('#container').selective();
+
+   $('.component').on('sl-deleted', function() {
+     $(this).remove();
+   });
+  </script>
+
+</body>
+</html>
